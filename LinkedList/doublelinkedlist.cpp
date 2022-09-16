@@ -8,10 +8,11 @@ class Node{
         Node* previous;
 };
 
-template<typename T>
-void PrintForward(Node<T>* head){
-    Node<T>* traverser = head;
-    while (traverser != nullptr)
+//Recorrer nodos dobles deade el head hasta el tail
+template<typename V>
+void PrintForward(Node<V>* head){
+    Node<V>* traverser = head;
+    while (traverser != NULL)
     {
         std::cout<<traverser->value<<std::endl;
         traverser = traverser->next;
@@ -19,10 +20,11 @@ void PrintForward(Node<T>* head){
     
 }
 
-template<typename T>
-void PrintBackward(Node<T>* tail){
-    Node<T>* traverser = tail;
-    while (traverser != nullptr)
+//Recorrer nodos dobles deade el tail hasta el head (reverso)
+template<typename V>
+void PrintBackward(Node<V>* tail){
+    Node<V>* traverser = tail;
+    while (traverser != NULL)
     {
         std::cout<<traverser->value<<std::endl;
         traverser = traverser->previous;
@@ -31,41 +33,43 @@ void PrintBackward(Node<T>* tail){
 }
 
 int main(){
-    //head and tail
+    //create head and tail for doublelinkedlist
     Node<int>* head;
     Node<int>* tail;
-    //1st node
+    //create first node
     Node<int>* node = new Node<int>();
     node->value = 4;
-    node->next = nullptr;
-    node->previous = nullptr;
-    //assignment
+    node->next = NULL;
+    node->previous = NULL;
+    //equal
     head = node;
     tail = node;
-    //2d node
+    //second node
     node = new Node<int>();
     node->value = 5;
-    node->next = nullptr;
+    node->next = NULL;
     node->previous = tail;
     tail->next = node;
     tail = node;
-    //3d node
+    //third node
     node = new Node<int>();
     node->value = 6;
-    node->next = nullptr;
+    node->next = NULL;
     node->previous = tail;
     tail->next = node;
     tail = node;
-    //4d node
+    //fourth node
     node = new Node<int>();
     node->value = 7;
-    node->next = nullptr;
+    node->next = NULL;
     node->previous = tail;
     tail->next = node;
     tail = node;
-    std::cout<<"Print backward: "<<std::endl;
-    PrintBackward(tail);
-    std::cout<<"Print Forward: "<<std::endl;
+    //PrintForward
+    std::cout<<"Print double linked list forward:"<<std::endl;
     PrintForward(head);
+    //printbackward
+    std::cout<<"Print double linked list backward:"<<std::endl;
+    PrintBackward(tail);
     return 0;
 }

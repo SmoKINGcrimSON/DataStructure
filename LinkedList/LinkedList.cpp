@@ -121,7 +121,7 @@ int main(){
     third->next = NULL;
     //InsertAtTheFront(&head, Enemy("ilag", 14.6f));
     //InsertAtTheEnd(&head, Enemy("Alfeim", 5.6f));
-    InsertAfter(head, Enemy("generic", 14.5f));
+    InsertAfter(head, Enemy("generic", 20.5f));
     PrintList(head);
     delete head;
     head = NULL;
