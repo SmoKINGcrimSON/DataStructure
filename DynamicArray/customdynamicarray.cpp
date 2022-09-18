@@ -96,6 +96,33 @@ class DynamicArray{
                 }
             }
         }
+        void SelectionSort(){
+            int min;
+            T temp;
+            for(int i = 0; i < this->size - 1; i++){
+                int min = i;
+                for(int j = i + 1; j < this->size; j++){
+                    if(this->array[min] > this->array[j]){
+                        min = j;
+                    }
+                }
+                temp = array[i];
+                this->array[i] = this->array[min];
+                this->array[min] = temp;
+            }
+        }
+        void InsertionSort(){
+            T temp;
+            for(int i = 1; i < this->size; i++){
+                temp = this->array[i];
+                int j = i - 1;
+                while (j >= 0 && this->array[j] > temp){
+                    this->array[j + 1] = this->array[j]; 
+                    j--;
+                }
+                array[j + 1] = temp;
+            }
+        }
         void Grow(){
             int newCapacity = (int)this->capacity * 2;
             T* newArray = new T[newCapacity];
@@ -143,7 +170,7 @@ int main(){
     myNums.Insert(0, 3.6);
     myNums.add(14.6);
     myNums.add(16.78);
-    myNums.BubbleSort();
+    myNums.InsertionSort();
     myNums.Insert(0, 1.345);
     std::cout<<"Print dynamic array:"<<std::endl;
     std::cout<<myNums<<std::endl;
