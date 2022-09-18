@@ -59,13 +59,42 @@ class DynamicArray{
                 }
             }
         } 
-        int LinearSearch(T obj){
+        int LinearSearch(const T obj){
             for(int i = 0; i < this->size; i++){
                 if(this->array[i] == obj){
                     return i;
                 }
             }
             return -1;
+        }
+        int BinarySearch(const T obj){
+            int min = 0;
+            int max = this->size - 1;
+            int middle;
+            while (true)
+            {
+                middle = (int) min + (max - min)/2;
+                if(this->array[middle] < obj){
+                    min = middle + 1;
+                }
+                else if(this->array[middle] > obj){
+                    max = middle - 1;
+                }
+                else return middle;
+            }
+            return -1;
+        }
+        void BubbleSort(){
+            T temp;
+            for(int i = 0; i < this->size - 1; i++){
+                for(int j = 0; j < this->size - i - 1; j++){
+                    if(this->array[j] > this->array[j + 1]){
+                        temp = array[j];
+                        array[j] = array[j+1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
         }
         void Grow(){
             int newCapacity = (int)this->capacity * 2;
@@ -114,13 +143,15 @@ int main(){
     myNums.Insert(0, 3.6);
     myNums.add(14.6);
     myNums.add(16.78);
+    myNums.BubbleSort();
     myNums.Insert(0, 1.345);
     std::cout<<"Print dynamic array:"<<std::endl;
     std::cout<<myNums<<std::endl;
     std::cout<<"capacity array: "<<myNums.Capacity()<<std::endl;
     std::cout<<"size of array: "<<myNums.Size()<<std::endl;
     std::cout<<"dynamic array is empty? "<<myNums.Empty()<<std::endl;
-    std::cout<<"Linear search if \"123.7\": "<<myNums.LinearSearch(123.7)<<std::endl;
+    std::cout<<"Linear search \"123.7\": "<<myNums.LinearSearch(123.7)<<std::endl;
+    std::cout<<"Binary search \"123.7\": "<<myNums.BinarySearch(123.7)<<std::endl;
     std::cout<<"------------------------------------------------------------------\n";
     myNums.Delete(13.6);
     myNums.Delete(123.7);
