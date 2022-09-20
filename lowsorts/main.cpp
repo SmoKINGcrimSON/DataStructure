@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../sorts/sort.h"
+#include "../lowsorts/sort.h"
 
 int main(){
     int nums[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
